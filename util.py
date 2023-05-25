@@ -37,7 +37,7 @@ def belongs(subset, set):
 
 def print_results(observable_values, dT, dZ, nameof_value):
     header_column = [nameof_value,
-                     'dT Algo 1', 'dT Algo 2', 'dT Algo 3'
+                     'dT Algo 1', 'dT Algo 2', 'dT Algo 3',
                      'dZ Algo 1', 'dZ Algo 2', 'dZ Algo 3']
     dT = reshape(dT, 3, len(dT))
     dZ = reshape(dZ, 3, len(dZ))
