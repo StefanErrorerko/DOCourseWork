@@ -1,12 +1,15 @@
+import numpy as np
+
 def solve(C, w, m, p, T, ab, cd):
     ts, tf = T['start'], T['end']
-    n, nw, S = len(C), 0, [[]] * m
+    n, nw, S = len(C), 0, [[] for _ in range(m)]
     servable_clients = C.copy()
     for t in range(ts, tf-1):
         c = []
-        for j in range(n):
-            if belongs(T, ab[j]) or belongs(T, cd[j]):
-                c.append(j)
+        t = {'start': t, 'end': t + 1}
+        for j in range(len(servable_clients)):
+            if belongs(t, ab[j]) or belongs(t, cd[j]):
+                c.append(servable_clients[j])
         bubble_sort_wt(c, w, ab, cd)
         for k in range(m):
             if k < len(c):
