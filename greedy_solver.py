@@ -10,7 +10,7 @@ class GreedySolver(Solver):
         S, taken_intervals1, taken_intervals2 = [[] for _ in range(m)], [[] for _ in range(m)], \
             [[] for _ in range(m)]
         c1 = C.copy()
-        Sorter.bubble_sort_w(c1, ab, cd)
+        Sorter.bubble_sort_w(c1, w)
         for i in c1:
             for j in range(m):
                 if ab[i]['start'] not in taken_intervals1[j]:
