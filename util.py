@@ -26,26 +26,3 @@ class Utility:
         if subset['start'] >= set['start'] and subset['end'] <= set['end']:
             return True
         return False
-
-    @staticmethod
-    def print_results(observable_values, dT, dZ, nameof_value):
-        header_column = [nameof_value,
-                         'dT Algo 1', 'dT Algo 2', 'dT Algo 3',
-                         'dZ Algo 1', 'dZ Algo 2', 'dZ Algo 3']
-        dT = Utility.reshape(dT, 3, len(dT))
-        dZ = Utility.reshape(dZ, 3, len(dZ))
-
-        table_data = list(zip(observable_values,
-                              dT[0], dT[1], dT[2],
-                              dZ[0], dZ[1], dZ[2]))
-        table = tabulate(table_data, headers=header_column, tablefmt="grid")
-        print(table)
-
-    @staticmethod
-    def reshape(arr, r, c):
-        new_arr = []
-        for i in range(r):
-            new_arr.append([])
-            for j in range(c):
-                new_arr[i].append(arr[j][i])
-        return new_arr
