@@ -1,9 +1,9 @@
-from decompose_solver import DecomposeSolver
-from combine_solver import CombineSolver
+
 from problem_generator import ProblemGenerator
 from problem_solver import ProblemSolver
 import json
 import sys
+
 
 class Controller:
     @staticmethod
@@ -20,15 +20,18 @@ class Controller:
 
     @staticmethod
     def decompose_solve(C, w, m, p, T, ab, cd):
-        return DecomposeSolver.solve(C, w, m, p, T, ab, cd)
+        solver = ProblemSolver()
+        return solver.decompose_solve(C, w, m, p, T, ab, cd)
 
     @staticmethod
     def combine_solve(C, w, m, p, T, ab, cd):
-        return CombineSolver.solve(C, w, m, p, T, ab, cd)
+        solver = ProblemSolver()
+        return solver.combine_solve(C, w, m, p, T, ab, cd)
 
     @staticmethod
     def probable_solve(C, w, m, p, T, ab, cd):
-        return None, None
+        solver = ProblemSolver()
+        return solver.probable_solve(C, w, m, p, T, ab, cd)
 
     @staticmethod
     def get_random_parameters():

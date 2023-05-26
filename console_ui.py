@@ -16,7 +16,7 @@ class ConsoleUI:
         self.display_start_menu()
     def display_start_menu(self):
         print("Для початку оберіть режим роботи:")
-        print("1. Розв'язати алгоритм доступним алгоритмом\n"
+        print("1. Розв'язати задачу доступним алгоритмом\n"
               "2. Провести експеримент зі зміною кількості клієнтів n\n"
               "3. Провести експеримент зі зміною кількості бригад m\n"
               "4. Провести експеримент зі зміною інтервалу роботи [Ts; Tf]\n"
@@ -40,9 +40,9 @@ class ConsoleUI:
         ))()
     def display_solving(self):
         print("Для початку оберіть режим отримання значень:")
-        print("1. Ввід з консолі"
-              "2. Випадковим чином"
-              "3. Зчитування з файлу")
+        print("1. Ввід з консолі\n"
+              "2. Випадковим чином\n"
+              "3. Зчитування з файлу\n")
         self.get_value_input_option()
 
     def get_value_input_option(self):
@@ -84,10 +84,10 @@ class ConsoleUI:
                 ab.append({'start': int(a), 'end': int(b)})
                 cd.append({'start': int(c), 'end': int(d)})
                 Controller.check_values(n, w_i, m, T, ab, cd)
+            self.get_solving_option(n, w, m, 1, T, ab, cd)
         except:
             print("Введено невірні дані")
             self.solve_value_from_console()
-        self.get_solving_option(n, w, m, 1, T, ab, cd)
 
     def solve_value_from_random(self):
         C, w, m, p, T, ab, cd = Controller.get_random_parameters()

@@ -1,4 +1,3 @@
-import numpy as np
 from solver import Solver
 from util import Utility
 from sorter import Sorter
