@@ -4,7 +4,7 @@ from tabulate import tabulate
 
 
 class ConsoleUI:
-    def __init__(self, N, M, T_arr, n=50, m=2):
+    def __init__(self, N, M, T_arr, n=100, m=10):
         self.N = N
         self.M = M
         self.T_arr = T_arr
@@ -145,16 +145,16 @@ class ConsoleUI:
         print(f"Розклад: {S}")
         print(f"ЦФ: {nw}")
 
-    def print_test_results(self, observable_values, dT, dZ, nameof_value):
-        header_column = [nameof_value,
-                         'dT Algo 1', 'dT Algo 2', 'dT Algo 3',
-                         'dZ Algo 1', 'dZ Algo 2', 'dZ Algo 3']
-        dT = self.reshape(dT, 3, len(dT))
-        dZ = self.reshape(dZ, 3, len(dZ))
+    def print_test_results(self, obs_vals, dT, dZ, val_name):
+        header_column = [val_name,
+                         'dT (A1)', 'dT (A2)', 'dT (A3)', 'dT (Greedy)',
+                         'dZ (A1)', 'dZ (A2)', 'dZ (A3)', 'dZ (Greedy)']
+        dT = self.reshape(dT, 4, len(dT))
+        dZ = self.reshape(dZ, 4, len(dZ))
 
-        table_data = list(zip(observable_values,
-                              dT[0], dT[1], dT[2],
-                              dZ[0], dZ[1], dZ[2]))
+        table_data = list(zip(obs_vals,
+                              dT[0], dT[1], dT[2], dT[3],
+                              dZ[0], dZ[1], dZ[2], dZ[3]))
         table = tabulate(table_data, headers=header_column, tablefmt="grid")
         print(table)
 

@@ -38,5 +38,5 @@ class CombineSolver(Solver):
                     taken_intervals2[j].append(cd[i]['start'])
 
         if nw1 < nw2:
-            return S2, nw2
-        return S1, nw1
+            return S2, nw1
+        return S1, nw2
