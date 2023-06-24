@@ -4,9 +4,9 @@ from util import Utility
 
 class ProbableSolver(Solver):
     @staticmethod
-    def solve(c, w, m, p, T, ab, cd):
+    def solve(c, w, m, N, p, T, ab, cd):
         nw = 0
-        for k in range(1, 101):
+        for k in range(1, N + 1):
             s_local = [[] for _ in range(m)]
             nw_Local = 0
             taken_interv = [[] for _ in range(m)]

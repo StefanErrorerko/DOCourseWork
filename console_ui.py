@@ -4,13 +4,14 @@ from tabulate import tabulate
 
 
 class ConsoleUI:
-    def __init__(self, N, M, T_arr, n=100, m=10):
+    def __init__(self, N, M, T_arr, N_prompts=100, n=100, m=10):
         self.N = N
         self.M = M
         self.T_arr = T_arr
         self.n = n
         self.m = m
         self.T = T_arr[0]
+        self.N_prompts = N_prompts
 
     def start(self):
         self.display_start_menu()
@@ -76,11 +77,15 @@ class ConsoleUI:
             n = int(input("Введіть кількість клієнтів: "))
             m = int(input("Введіть кількість бригад: "))
             Ts, Tf = input("Введіть інтервал роботи бригад (через кому у год): ").split(", ")
+            if int(Ts) >= int(Tf):
+                raise Exception("Невірно введені проміжки")
             T = {'start': int(Ts), 'end': int(Tf)}
             for i in range(n):
                 w_i = int(input(f"Введіть вагу клієнта (від 1 до 3): "))
                 w.append(w_i)
                 a, b, c, d = input(f"Введіть проміжки, в яких вільний клієнт №{i+1} (через кому у год): ").split(", ")
+                if int(a) >= int(b) or int(b) > int(c) or int(c) >= int(d):
+                    raise Exception("Невірно введені проміжки")
                 ab.append({'start': int(a), 'end': int(b)})
                 cd.append({'start': int(c), 'end': int(d)})
                 Controller.check_values(n, w_i, m, T, ab, cd)
@@ -101,7 +106,8 @@ class ConsoleUI:
         print("Оберіть один із доступних алгоритмів для розв'язання")
         print("1. Розв'язати задачу алгоритмом розкладу з декомпозицією\n"
               "2. Розв'язати задачу комбінованим жадібним алгоритмом\n"
-              "3. Розв'язати задачу ймовірнісним алгоритмом\n")
+              "3. Розв'язати задачу ймовірнісним алгоритмом\n"
+              "4. Розв'язати задачу жадібним алгоритмом\n")
         self.get_solving_choice(n, w, m, p, T, ab, cd)
 
     def get_solving_choice(self, n, w, m, p, T, ab, cd):
@@ -109,7 +115,8 @@ class ConsoleUI:
         cases = {
             '1': lambda: self.display_decompose_solving(n, w, m, p, T, ab, cd),
             '2': lambda: self.display_combine_solving(n, w, m, p, T, ab, cd),
-            '3': lambda: self.display_probable_solving(n, w, m, p, T, ab, cd)
+            '3': lambda: self.display_probable_solving(n, w, m, p, T, ab, cd),
+            '4': lambda : self.display_greedy_solving(n, w, m, p, T, ab, cd)
         }
 
         cases.get(key, lambda: (
@@ -137,8 +144,16 @@ class ConsoleUI:
         C = []
         for i in range(n):
             C.append(i)
-        S, nw = Controller.probable_solve(C, w, m, p, T, ab, cd)
+        S, nw = Controller.probable_solve(C, w, m, p, T, ab, cd, self.N_prompts)
         print("Результат роботи ймовірнісного алгоритму:")
+        self.print_solve_results(S, nw)
+
+    def display_greedy_solving(self, n, w, m, p, T, ab, cd):
+        C = []
+        for i in range(n):
+            C.append(i)
+        S, nw = Controller.greedy_solve(C, w, m, p, T, ab, cd)
+        print("Результат роботи жадібного алгоритму:")
         self.print_solve_results(S, nw)
 
     def print_solve_results(self, S, nw):

@@ -1,4 +1,4 @@
-
+from greedy_solver import GreedySolver
 from problem_generator import ProblemGenerator
 from problem_solver import ProblemSolver
 import json
@@ -29,9 +29,14 @@ class Controller:
         return solver.combine_solve(C, w, m, p, T, ab, cd)
 
     @staticmethod
-    def probable_solve(C, w, m, p, T, ab, cd):
+    def probable_solve(C, w, m, p, T, ab, cd, N):
         solver = ProblemSolver()
-        return solver.probable_solve(C, w, m, p, T, ab, cd)
+        return solver.probable_solve(C, w, m, p, T, ab, cd, N)
+
+    @staticmethod
+    def greedy_solve(C, w, m, p, T, ab, cd):
+        solver = ProblemSolver()
+        return solver.greedy_solve(C, w, m, p, T, ab, cd)
 
     @staticmethod
     def get_random_parameters():
