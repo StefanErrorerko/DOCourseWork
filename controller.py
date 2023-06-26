@@ -31,7 +31,7 @@ class Controller:
     @staticmethod
     def probable_solve(C, w, m, p, T, ab, cd, N):
         solver = ProblemSolver()
-        return solver.probable_solve(C, w, m, p, T, ab, cd, N)
+        return solver.probable_solve(C, w, m, p, T, ab, cd)
 
     @staticmethod
     def greedy_solve(C, w, m, p, T, ab, cd):

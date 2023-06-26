@@ -4,7 +4,7 @@ from tabulate import tabulate
 
 
 class ConsoleUI:
-    def __init__(self, N, M, T_arr, N_prompts=100, n=100, m=10):
+    def __init__(self, N, M, T_arr, N_prompts=100, n=50, m=2):
         self.N = N
         self.M = M
         self.T_arr = T_arr

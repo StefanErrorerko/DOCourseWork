@@ -12,8 +12,8 @@ class ProblemGenerator:
             C.append(i)
             w_i = Utility.rand_exp(0.25, 1, 3)
             w.append(w_i)
-            t1 = Utility.rand_normal(0.3/w_i, p, tf-ts-p)
-            t2 = Utility.rand_normal(0.3/w_i, p, tf-ts-t1)
+            t1 = Utility.rand_normal(0.2/w_i, p, tf-ts-p)
+            t2 = Utility.rand_normal(0.15/w_i, p, tf-ts-t1)
             a = random.randint(ts, tf-t2-t1)
             b = a + t1
             c = random.randint(b, tf-t2)

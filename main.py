@@ -1,8 +1,8 @@
 from console_ui import ConsoleUI
 
 N_prompts = 100
-N = [75, 90, 100, 125, 150]
-M = [2, 5, 7, 10, 12]
+N = [10, 15, 20, 25, 50]
+M = [2, 3, 4, 5, 6]
 T_arr = [{'start': 10, 'end': 16},
          {'start': 10, 'end': 17},
          {'start': 10, 'end': 18},

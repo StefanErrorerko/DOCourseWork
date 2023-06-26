@@ -87,9 +87,9 @@ class ProblemSolver:
     def combine_solve(self, C, w, m, p, T, ab, cd):
         return CombineSolver.solve(C, w, m, p, T, ab, cd)
 
-    def probable_solve(self, C, w, m, p, T, ab, cd, N):
-        C, p, w, ab, cd = ProblemGenerator.generate_problem(len(C), T)
-        return CombineSolver.solve(C, w, m, p, T, ab, cd)
+    def probable_solve(self, C, w, m, p, T, ab, cd):
+        #C, p, w, ab, cd = ProblemGenerator.generate_problem(len(C), T)
+        return ProbableSolver.solve(C, w, m, p, T, ab, cd)
 
     def greedy_solve(self, C, w, m, p, T, ab, cd):
         return GreedySolver.solve(C, w, m, p, T, ab, cd)
